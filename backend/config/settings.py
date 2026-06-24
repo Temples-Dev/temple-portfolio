@@ -152,8 +152,10 @@ SPECTACULAR_SETTINGS = {
 }
 
 # Production hardening (no-op when DEBUG=True)
+# SECURE_SSL_REDIRECT is intentionally absent — Coolify terminates TLS; setting
+# it would cause redirect loops since Coolify sends HTTP internally to gunicorn.
 if not DEBUG:
+    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
     SECURE_HSTS_SECONDS = 31536000
-    SECURE_SSL_REDIRECT = True
     SESSION_COOKIE_SECURE = True
     CSRF_COOKIE_SECURE = True
