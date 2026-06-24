@@ -1,0 +1,155 @@
+import { Link } from 'react-router-dom'
+import { motion } from 'framer-motion'
+import { useFeaturedProjects } from '@/hooks/useProjects'
+import SectionLabel from '@/components/common/SectionLabel/SectionLabel'
+import Badge from '@/components/common/Badge/Badge'
+import type { Project } from '@/types'
+
+export default function FeaturedWork() {
+  const { data, isLoading, isError } = useFeaturedProjects()
+  const projects = data?.results ?? []
+
+  return (
+    <section id="work" className="py-24 bg-bg">
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="flex flex-col lg:flex-row gap-12">
+          {/* Left label column */}
+          <div className="lg:w-[280px] shrink-0">
+            <SectionLabel>Featured Work</SectionLabel>
+            <h2 className="mt-3 font-display text-3xl text-text-primary">
+              Selected projects that drive results
+            </h2>
+            <Link
+              to="/projects"
+              className="mt-6 inline-flex items-center gap-2 text-sm text-accent hover:text-accent-hover font-medium transition-colors"
+            >
+              VIEW ALL PROJECTS →
+            </Link>
+          </div>
+
+          {/* Right project grid */}
+          <div className="flex-1">
+            {isLoading || isError || projects.length === 0 ? (
+              <ProjectPlaceholderGrid />
+            ) : (
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {projects.map((project, i) => (
+                  <ProjectCard key={project.id} project={project} index={i} />
+                ))}
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+function ProjectCard({ project, index }: { project: Project; index: number }) {
+  return (
+    <motion.div
+      initial={{ y: 20 }}
+      whileInView={{ y: 0 }}
+      viewport={{ once: true }}
+      transition={{ delay: index * 0.08, duration: 0.45, ease: 'easeOut' }}
+    >
+      <Link
+        to={`/projects/${project.slug}`}
+        className="block group rounded-xl overflow-hidden border border-border bg-card shadow-card hover:-translate-y-1 hover:shadow-lg transition-all duration-200"
+      >
+        <div className="aspect-[4/3] overflow-hidden bg-surface">
+          {project.thumbnail ? (
+            <img
+              src={project.thumbnail}
+              alt={project.title}
+              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+              loading="lazy"
+            />
+          ) : (
+            <ProjectThumbnailPlaceholder index={index} />
+          )}
+        </div>
+        <div className="p-4">
+          <Badge>{project.category_display}</Badge>
+          <h3 className="mt-2 font-display text-xl text-text-primary group-hover:text-accent transition-colors">
+            {project.title}
+          </h3>
+          <p className="mt-1 text-sm text-text-secondary line-clamp-2">
+            {project.short_description}
+          </p>
+        </div>
+      </Link>
+    </motion.div>
+  )
+}
+
+const placeholderProjects = [
+  {
+    id: '1',
+    title: 'Mental Health Platform',
+    category_display: 'UI/UX Design',
+    short_description: 'A calming digital space for mental wellness and therapy management.',
+    slug: '#',
+    gradient: 'from-teal-900/80 to-slate-800/80',
+  },
+  {
+    id: '2',
+    title: 'Architecture Studio',
+    category_display: 'Web Development',
+    short_description: 'Bold, minimalist portfolio for a leading architecture firm.',
+    slug: '#',
+    gradient: 'from-stone-700/80 to-amber-900/80',
+  },
+  {
+    id: '3',
+    title: 'E-commerce Platform',
+    category_display: 'UI/UX Design',
+    short_description: 'End-to-end shopping experience for an independent fashion brand.',
+    slug: '#',
+    gradient: 'from-rose-900/80 to-slate-700/80',
+  },
+]
+
+function ProjectPlaceholderGrid() {
+  return (
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {placeholderProjects.map((p, i) => (
+        <motion.div
+          key={p.id}
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-60px' }}
+          transition={{ delay: i * 0.1, duration: 0.5, ease: 'easeOut' }}
+          className="block rounded-xl overflow-hidden border border-border bg-card shadow-card"
+        >
+          <div className="aspect-[4/3] overflow-hidden">
+            <ProjectThumbnailPlaceholder index={i} />
+          </div>
+          <div className="p-4">
+            <Badge>{p.category_display}</Badge>
+            <h3 className="mt-2 font-display text-xl text-text-primary">{p.title}</h3>
+            <p className="mt-1 text-sm text-text-secondary line-clamp-2">{p.short_description}</p>
+          </div>
+        </motion.div>
+      ))}
+    </div>
+  )
+}
+
+function ProjectThumbnailPlaceholder({ index }: { index: number }) {
+  const gradients = [
+    'linear-gradient(135deg, #1F6B61 0%, #0D2B36 100%)',
+    'linear-gradient(135deg, #C97C3D 0%, #0D2B36 100%)',
+    'linear-gradient(135deg, #0D2B36 0%, #4A6570 100%)',
+  ]
+  return (
+    <div
+      className="w-full h-full flex items-end p-4"
+      style={{ background: gradients[index % gradients.length] }}
+    >
+      <div className="text-white/80 text-xs font-medium tracking-wider uppercase">
+        Case Study
+      </div>
+    </div>
+  )
+}
