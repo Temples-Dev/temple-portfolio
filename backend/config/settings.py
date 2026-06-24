@@ -11,6 +11,10 @@ DEBUG = env('DEBUG', default=True)
 ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', default=['localhost', '127.0.0.1'])
 
 INSTALLED_APPS = [
+    'unfold',
+    'unfold.contrib.filters',
+    'unfold.contrib.forms',
+    'unfold.contrib.inlines',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -149,6 +153,30 @@ SPECTACULAR_SETTINGS = {
     'DESCRIPTION': 'Backend API for the Temple portfolio site.',
     'VERSION': '1.0.0',
     'SERVE_INCLUDE_SCHEMA': False,
+}
+
+# Django Unfold admin — palette derived from frontend brand tokens
+UNFOLD = {
+    "SITE_TITLE": "Temple Admin",
+    "SITE_HEADER": "Temple Portfolio",
+    "SITE_SYMBOL": "edit_square",
+    "SHOW_HISTORY": True,
+    "SHOW_VIEW_ON_SITE": True,
+    "COLORS": {
+        "primary": {
+            "50":  "252 241 228",
+            "100": "248 226 199",
+            "200": "240 204 161",
+            "300": "228 175 117",
+            "400": "216 150 82",
+            "500": "201 124 61",   # #C97C3D accent
+            "600": "180 108 49",   # #B46C31 accent-hover
+            "700": "145 84 37",
+            "800": "105 61 27",
+            "900": "70 41 18",
+            "950": "42 24 10",
+        },
+    },
 }
 
 # Production hardening (no-op when DEBUG=True)

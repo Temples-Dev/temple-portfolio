@@ -1,9 +1,10 @@
 from django.contrib import admin
+from unfold.admin import ModelAdmin
 from .models import ContactSubmission
 
 
 @admin.register(ContactSubmission)
-class ContactSubmissionAdmin(admin.ModelAdmin):
+class ContactSubmissionAdmin(ModelAdmin):
     list_display  = ['name', 'email', 'project_type', 'budget_range', 'is_read', 'created_at']
     list_filter   = ['project_type', 'is_read', 'created_at']
     list_editable = ['is_read']

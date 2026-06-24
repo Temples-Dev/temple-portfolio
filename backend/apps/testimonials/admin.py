@@ -1,9 +1,10 @@
 from django.contrib import admin
+from unfold.admin import ModelAdmin
 from .models import Testimonial
 
 
 @admin.register(Testimonial)
-class TestimonialAdmin(admin.ModelAdmin):
+class TestimonialAdmin(ModelAdmin):
     list_display  = ['client_name', 'client_company', 'rating', 'is_featured', 'order']
     list_editable = ['is_featured', 'order']
     list_filter   = ['is_featured', 'rating']
