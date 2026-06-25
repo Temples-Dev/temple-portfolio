@@ -1,8 +1,11 @@
+import logging
 from rest_framework import generics, permissions, status
 from rest_framework.response import Response
 from .models import ContactSubmission
 from .serializers import ContactSubmissionSerializer, ContactSubmissionAdminSerializer
 from .tasks import send_contact_notification
+
+logger = logging.getLogger(__name__)
 
 
 class ContactSubmitView(generics.CreateAPIView):
@@ -13,7 +16,18 @@ class ContactSubmitView(generics.CreateAPIView):
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         submission = serializer.save()
-        send_contact_notification(str(submission.id))
+        try:
+            send_contact_notification(str(submission.id))
+        except Exception:
+            logger.exception("Email send failed for submission %s", submission.id)
+            return Response(
+                {
+                    'id': str(submission.id),
+                    'message': f"Thanks {submission.name}, your message was saved but email delivery failed — I'll still be in touch.",
+                    'email_error': True,
+                },
+                status=status.HTTP_201_CREATED,
+            )
         return Response(
             {
                 'id': str(submission.id),
