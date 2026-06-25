@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import SectionLabel from '@/components/common/SectionLabel/SectionLabel'
+import templePhoto from '@/assets/temple.jpeg'
 
 const features = [
   {
@@ -53,18 +54,13 @@ export default function About() {
             transition={{ duration: 0.55, ease: 'easeOut' }}
             className="relative"
           >
-            <div
-              className="rounded-2xl overflow-hidden aspect-[4/5] max-w-sm mx-auto lg:mx-0"
-              style={{
-                background: 'linear-gradient(160deg, #0D2B36 0%, #1F6B61 60%, #C97C3D 100%)',
-              }}
-            >
-              <div className="w-full h-full flex items-end p-8">
-                <div className="text-white">
-                  <p className="text-sm tracking-widest uppercase opacity-60 mb-2">Designer &</p>
-                  <p className="font-display text-3xl leading-tight">Developer</p>
-                </div>
-              </div>
+            <div className="rounded-2xl overflow-hidden aspect-[4/5] max-w-sm mx-auto lg:mx-0 bg-surface">
+              <img
+                src={templePhoto}
+                alt="Temple — designer and developer"
+                className="w-full h-full object-cover object-top"
+                loading="lazy"
+              />
             </div>
             {/* Accent blob */}
             <div className="absolute -bottom-4 -right-4 w-24 h-24 rounded-full bg-accent/10 -z-10" />
