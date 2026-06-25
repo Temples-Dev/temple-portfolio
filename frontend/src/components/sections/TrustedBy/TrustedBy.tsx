@@ -1,55 +1,22 @@
 import SectionLabel from '@/components/common/SectionLabel/SectionLabel'
 
-const logos = [
-  {
-    name: 'Loom',
-    svg: (
-      <svg viewBox="0 0 80 24" fill="currentColor" height="20">
-        <text x="0" y="18" fontFamily="system-ui" fontWeight="700" fontSize="18">Loom</text>
-      </svg>
-    ),
-  },
-  {
-    name: 'Trello',
-    svg: (
-      <svg viewBox="0 0 80 24" fill="currentColor" height="20">
-        <text x="0" y="18" fontFamily="system-ui" fontWeight="700" fontSize="18">Trello</text>
-      </svg>
-    ),
-  },
-  {
-    name: 'Notion',
-    svg: (
-      <svg viewBox="0 0 80 24" fill="currentColor" height="20">
-        <text x="0" y="18" fontFamily="system-ui" fontWeight="700" fontSize="18">Notion</text>
-      </svg>
-    ),
-  },
-  {
-    name: 'Slack',
-    svg: (
-      <svg viewBox="0 0 80 24" fill="currentColor" height="20">
-        <text x="0" y="18" fontFamily="system-ui" fontWeight="700" fontSize="18">Slack</text>
-      </svg>
-    ),
-  },
-  {
-    name: 'Webflow',
-    svg: (
-      <svg viewBox="0 0 90 24" fill="currentColor" height="20">
-        <text x="0" y="18" fontFamily="system-ui" fontWeight="700" fontSize="18">Webflow</text>
-      </svg>
-    ),
-  },
-  {
-    name: 'Figma',
-    svg: (
-      <svg viewBox="0 0 80 24" fill="currentColor" height="20">
-        <text x="0" y="18" fontFamily="system-ui" fontWeight="700" fontSize="18">Figma</text>
-      </svg>
-    ),
-  },
+const orgs = [
+  'SHELLLABSHQ',
+  'LIFE-MAC AFRICA',
+  'GATHEREASE',
+  'TBSS',
+  'BALLOTBASE',
+  'COREPEAK',
+  'TECHLOFT',
 ]
+
+function OrgName({ name }: { name: string }) {
+  return (
+    <span className="text-sm font-bold tracking-widest text-text-secondary opacity-60 hover:opacity-100 transition-opacity cursor-default whitespace-nowrap">
+      {name}
+    </span>
+  )
+}
 
 export default function TrustedBy() {
   return (
@@ -60,28 +27,22 @@ export default function TrustedBy() {
 
           {/* Desktop: static row */}
           <div className="hidden md:flex items-center gap-10 flex-wrap">
-            {logos.map((logo) => (
-              <div
-                key={logo.name}
-                className="text-text-secondary opacity-60 hover:opacity-100 transition-opacity cursor-default"
-                aria-label={logo.name}
-              >
-                {logo.svg}
-              </div>
+            {orgs.map((name) => (
+              <OrgName key={name} name={name} />
             ))}
           </div>
 
           {/* Mobile: marquee */}
           <div className="md:hidden w-full overflow-hidden">
             <div className="flex gap-10 w-max" style={{ animation: 'marquee 20s linear infinite' }}>
-              {[...logos, ...logos].map((logo, i) => (
-                <div
-                  key={`${logo.name}-${i}`}
-                  className="text-text-secondary opacity-60"
-                  aria-hidden={i >= logos.length}
+              {[...orgs, ...orgs].map((name, i) => (
+                <span
+                  key={`${name}-${i}`}
+                  className="text-sm font-bold tracking-widest text-text-secondary opacity-60 whitespace-nowrap"
+                  aria-hidden={i >= orgs.length}
                 >
-                  {logo.svg}
-                </div>
+                  {name}
+                </span>
               ))}
             </div>
           </div>
