@@ -2,6 +2,7 @@ import DOMPurify from 'dompurify'
 import { Link, useParams, Navigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { usePost } from '@/hooks/useBlog'
+import SEO from '@/components/common/SEO/SEO'
 import Spinner from '@/components/common/Spinner/Spinner'
 
 function formatDate(iso: string | null) {
@@ -31,6 +32,25 @@ export default function BlogDetail() {
 
   return (
     <main className="min-h-screen bg-bg">
+      <SEO
+        title={post.title}
+        description={post.excerpt}
+        path={`/blog/${post.slug}`}
+        image={post.cover_image}
+        type="article"
+        publishedAt={post.published_at}
+        schema={{
+          '@context': 'https://schema.org',
+          '@type': 'Article',
+          headline: post.title,
+          description: post.excerpt,
+          image: post.cover_image,
+          datePublished: post.published_at,
+          url: `https://templelomotey.work/blog/${post.slug}`,
+          author: { '@type': 'Person', name: 'Temple Lomotey', url: 'https://templelomotey.work' },
+          publisher: { '@type': 'Person', name: 'Temple Lomotey', url: 'https://templelomotey.work' },
+        }}
+      />
       {/* Cover image */}
       {post.cover_image && (
         <div className="w-full h-64 md:h-96 overflow-hidden bg-surface">

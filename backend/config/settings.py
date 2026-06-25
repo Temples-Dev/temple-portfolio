@@ -143,6 +143,7 @@ EMAIL_BACKEND = env(
     default='django.core.mail.backends.console.EmailBackend',
 )
 DEFAULT_FROM_EMAIL = env('DEFAULT_FROM_EMAIL', default='noreply@temple.dev')
+FRONTEND_URL = env('FRONTEND_URL', default='https://templelomotey.work')
 ADMIN_EMAIL = env('ADMIN_EMAIL', default='temple@temple.dev')
 ANYMAIL = {
     'RESEND_API_KEY': env('RESEND_API_KEY', default=''),

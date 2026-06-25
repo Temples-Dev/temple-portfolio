@@ -1,5 +1,5 @@
 import { useParams, Link } from 'react-router-dom'
-import { Helmet } from 'react-helmet-async'
+import SEO from '@/components/common/SEO/SEO'
 import { useProject } from '@/hooks/useProjects'
 import Spinner from '@/components/common/Spinner/Spinner'
 import Badge from '@/components/common/Badge/Badge'
@@ -33,19 +33,21 @@ export default function ProjectDetail() {
 
   return (
     <>
-      <Helmet>
-        <title>{project.title} — Temple</title>
-        <meta name="description" content={project.short_description} />
-        <script type="application/ld+json">
-          {JSON.stringify({
-            '@context': 'https://schema.org',
-            '@type': 'CreativeWork',
-            name: project.title,
-            description: project.short_description,
-            author: { '@type': 'Person', name: 'Temple' },
-          })}
-        </script>
-      </Helmet>
+      <SEO
+        title={project.title}
+        description={project.short_description}
+        path={`/projects/${project.slug}`}
+        image={project.thumbnail}
+        schema={{
+          '@context': 'https://schema.org',
+          '@type': 'CreativeWork',
+          name: project.title,
+          description: project.short_description,
+          url: `https://templelomotey.work/projects/${project.slug}`,
+          image: project.thumbnail,
+          author: { '@type': 'Person', name: 'Temple Lomotey', url: 'https://templelomotey.work' },
+        }}
+      />
 
       <main className="min-h-screen pt-16">
         {/* Hero */}

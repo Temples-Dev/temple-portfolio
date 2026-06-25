@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { usePosts } from '@/hooks/useBlog'
 import type { BlogPost } from '@/types'
+import SEO from '@/components/common/SEO/SEO'
 import SectionLabel from '@/components/common/SectionLabel/SectionLabel'
 
 function formatDate(iso: string | null) {
@@ -90,6 +91,11 @@ export default function Blog() {
 
   return (
     <main className="min-h-screen">
+      <SEO
+        title="Blog — Insights on Design & Development"
+        description="Thoughts on building products, design systems, and everything in between by Temple Lomotey."
+        path="/blog"
+      />
       {/* Header */}
       <section className="bg-dark-bg pt-32 pb-20 px-6">
         <div className="max-w-7xl mx-auto">
