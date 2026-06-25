@@ -13,7 +13,7 @@ class ContactSubmitView(generics.CreateAPIView):
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         submission = serializer.save()
-        send_contact_notification.delay(str(submission.id))
+        send_contact_notification(str(submission.id))
         return Response(
             {
                 'id': str(submission.id),
