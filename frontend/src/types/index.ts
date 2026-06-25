@@ -47,6 +47,19 @@ export interface ContactFormData {
   message: string
 }
 
+export interface BlogPost {
+  id: string
+  title: string
+  slug: string
+  excerpt: string
+  content?: string
+  cover_image?: string
+  tags: string[]
+  is_published?: boolean
+  published_at: string | null
+  read_time_minutes: number
+}
+
 export interface PaginatedResponse<T> {
   count: number
   next: string | null

@@ -11,6 +11,7 @@ urlpatterns = [
         path('projects/', include('apps.projects.urls')),
         path('contact/', include('apps.contact.urls')),
         path('testimonials/', include('apps.testimonials.urls')),
+        path('blog/', include('apps.blog.urls')),
         path('auth/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
         path('auth/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
         path('health/', include('apps.core.urls')),
