@@ -1,17 +1,20 @@
 import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import { HashLink } from 'react-router-hash-link'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useUIStore } from '@/store/uiStore'
 import Logo from '@/components/common/Logo/Logo'
 import Button from '@/components/common/Button/Button'
 
 const navLinks = [
-  { label: 'Home', href: '/' },
-  { label: 'About', href: '/#about' },
-  { label: 'Services', href: '/#services' },
-  { label: 'Work', href: '/#work' },
-  { label: 'Blog', href: '/blog' },
+  { label: 'Home',     href: '/',         hash: false },
+  { label: 'About',    href: '/#about',   hash: true  },
+  { label: 'Services', href: '/#services',hash: true  },
+  { label: 'Work',     href: '/#work',    hash: true  },
+  { label: 'Blog',     href: '/blog',     hash: false },
 ]
+
+const linkClass = 'text-sm text-text-primary hover:text-accent transition-colors'
 
 export default function Navbar() {
   const { isNavScrolled, isMobileMenuOpen, setNavScrolled, setMobileMenuOpen, openContactModal } =
@@ -36,12 +39,15 @@ export default function Navbar() {
         <ul className="hidden md:flex items-center gap-8">
           {navLinks.map((link) => (
             <li key={link.label}>
-              <Link
-                to={link.href}
-                className="text-sm text-text-primary hover:text-accent transition-colors"
-              >
-                {link.label}
-              </Link>
+              {link.hash ? (
+                <HashLink smooth to={link.href} className={linkClass}>
+                  {link.label}
+                </HashLink>
+              ) : (
+                <Link to={link.href} className={linkClass}>
+                  {link.label}
+                </Link>
+              )}
             </li>
           ))}
         </ul>
@@ -90,13 +96,24 @@ export default function Navbar() {
             <ul className="px-6 py-4 flex flex-col gap-4">
               {navLinks.map((link) => (
                 <li key={link.label}>
-                  <Link
-                    to={link.href}
-                    className="text-sm text-text-primary hover:text-accent transition-colors"
-                    onClick={() => setMobileMenuOpen(false)}
-                  >
-                    {link.label}
-                  </Link>
+                  {link.hash ? (
+                    <HashLink
+                      smooth
+                      to={link.href}
+                      className={linkClass}
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      {link.label}
+                    </HashLink>
+                  ) : (
+                    <Link
+                      to={link.href}
+                      className={linkClass}
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      {link.label}
+                    </Link>
+                  )}
                 </li>
               ))}
               <li>
