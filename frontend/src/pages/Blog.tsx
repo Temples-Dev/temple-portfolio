@@ -3,7 +3,6 @@ import { motion } from 'framer-motion'
 import { usePosts } from '@/hooks/useBlog'
 import type { BlogPost } from '@/types'
 import SectionLabel from '@/components/common/SectionLabel/SectionLabel'
-import Spinner from '@/components/common/Spinner/Spinner'
 
 function formatDate(iso: string | null) {
   if (!iso) return ''
