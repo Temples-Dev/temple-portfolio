@@ -23,6 +23,7 @@ export default function Home() {
             'https://linkedin.com/in/temples-dev',
             'https://github.com/Temples-Dev',
             'https://x.com/temples_dev',
+            'https://instagram.com/lomotey.officialz',
           ],
         }}
       />
