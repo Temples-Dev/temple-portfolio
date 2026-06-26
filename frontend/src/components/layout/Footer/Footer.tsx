@@ -13,7 +13,7 @@ const navLinks = [
 const socialLinks = [
   {
     label: 'LinkedIn',
-    href: '#',
+    href: 'https://linkedin.com/in/temples-dev',
     icon: (
       <svg width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
         <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
@@ -24,7 +24,7 @@ const socialLinks = [
   },
   {
     label: 'Dribbble',
-    href: '#',
+    href: 'https://dribbble.com/temples-dev',
     icon: (
       <svg width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
         <circle cx="12" cy="12" r="10" />
@@ -34,7 +34,7 @@ const socialLinks = [
   },
   {
     label: 'Twitter',
-    href: '#',
+    href: 'https://x.com/temples_dev',
     icon: (
       <svg width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
         <path d="M4 4l16 16M4 20 20 4" />
@@ -43,7 +43,7 @@ const socialLinks = [
   },
   {
     label: 'Instagram',
-    href: '#',
+    href: 'https://instagram.com/temples_dev',
     icon: (
       <svg width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
         <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />

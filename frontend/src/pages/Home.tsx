@@ -19,9 +19,10 @@ export default function Home() {
           url: 'https://templelomotey.work',
           jobTitle: 'Full-Stack Designer & Developer',
           knowsAbout: ['UI/UX Design', 'Web Development', 'Branding', 'CMS', 'SEO'],
-          worksFor: [
-            'SHELLLABSHQ', 'LIFE-MAC AFRICA', 'GATHEREASE',
-            'TBSS', 'BALLOTBASE', 'COREPEAK', 'TECHLOFT',
+          sameAs: [
+            'https://linkedin.com/in/temples-dev',
+            'https://github.com/Temples-Dev',
+            'https://x.com/temples_dev',
           ],
         }}
       />
