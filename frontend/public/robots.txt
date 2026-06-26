@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /admin/
 
-Sitemap: https://api.templelomotey.work/api/v1/sitemap.xml
+Sitemap: https://templelomotey.work/sitemap.xml
