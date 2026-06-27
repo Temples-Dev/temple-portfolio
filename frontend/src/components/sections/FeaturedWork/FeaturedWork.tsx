@@ -13,7 +13,7 @@ const staticProjects = [
     role: 'Backend Development',
     category: 'Web Application',
     description:
-      'Built the backend infrastructure for Ghana\'s school bus tracking and student safety platform — APIs, data models, and service integrations.',
+      'Built the backend for Torch Bearers and Stationery Service — a book and stationery selling platform serving schools and institutions across Ghana.',
     href: 'https://www.tbssgh.com/',
     image: tbssImg,
   },
