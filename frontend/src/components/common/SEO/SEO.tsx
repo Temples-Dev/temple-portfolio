@@ -15,6 +15,7 @@ interface SEOProps {
   type?: 'website' | 'article'
   publishedAt?: string | null
   noIndex?: boolean
+  keywords?: string[]
   schema?: object | object[]
 }
 
@@ -26,6 +27,7 @@ export default function SEO({
   type = 'website',
   publishedAt,
   noIndex = false,
+  keywords,
   schema,
 }: SEOProps) {
   const fullTitle = title ? `${title} — ${SITE_NAME}` : DEFAULT_TITLE
@@ -35,6 +37,8 @@ export default function SEO({
     <Helmet>
       <title>{fullTitle}</title>
       <meta name="description" content={description} />
+      <meta name="author" content={SITE_NAME} />
+      {keywords && <meta name="keywords" content={keywords.join(', ')} />}
       <link rel="canonical" href={canonical} />
       {noIndex && <meta name="robots" content="noindex, nofollow" />}
 
