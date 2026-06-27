@@ -7,6 +7,7 @@ import ContactModal from '@/components/sections/ContactModal/ContactModal'
 import Spinner from '@/components/common/Spinner/Spinner'
 
 const Home = lazy(() => import('@/pages/Home'))
+const Projects = lazy(() => import('@/pages/Projects'))
 const ProjectDetail = lazy(() => import('@/pages/ProjectDetail'))
 const Blog = lazy(() => import('@/pages/Blog'))
 const BlogDetail = lazy(() => import('@/pages/BlogDetail'))
@@ -27,6 +28,7 @@ export default function App() {
       <Suspense fallback={<PageLoader />}>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/projects" element={<Projects />} />
           <Route path="/projects/:slug" element={<ProjectDetail />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/:slug" element={<BlogDetail />} />

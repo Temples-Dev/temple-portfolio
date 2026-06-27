@@ -1,9 +1,7 @@
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { useFeaturedProjects } from '@/hooks/useProjects'
 import SectionLabel from '@/components/common/SectionLabel/SectionLabel'
 import Badge from '@/components/common/Badge/Badge'
-import type { Project } from '@/types'
 import tbssImg from '@/assets/tbss_so.png'
 import gatherEaseImg from '@/assets/gatherease_so.png'
 import lifemacImg from '@/assets/lifemac_so.png'
@@ -42,9 +40,6 @@ const staticProjects = [
 ]
 
 export default function FeaturedWork() {
-  const { data, isLoading, isError } = useFeaturedProjects()
-  const projects = data?.results ?? []
-
   return (
     <section id="work" className="py-24 bg-bg">
       <div className="max-w-7xl mx-auto px-6">
@@ -63,21 +58,13 @@ export default function FeaturedWork() {
             </Link>
           </div>
 
-          {/* Right project grid */}
+          {/* Right project grid — always static */}
           <div className="flex-1">
-            {!isLoading && !isError && projects.length > 0 ? (
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {projects.map((project, i) => (
-                  <ApiProjectCard key={project.id} project={project} index={i} />
-                ))}
-              </div>
-            ) : (
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {staticProjects.map((project, i) => (
-                  <StaticProjectCard key={project.id} project={project} index={i} />
-                ))}
-              </div>
-            )}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {staticProjects.map((project, i) => (
+                <StaticProjectCard key={project.id} project={project} index={i} />
+              ))}
+            </div>
           </div>
         </div>
       </div>
@@ -124,58 +111,3 @@ function StaticProjectCard(
   )
 }
 
-function ApiProjectCard({ project, index }: { project: Project; index: number }) {
-  return (
-    <motion.div
-      initial={{ y: 20 }}
-      whileInView={{ y: 0 }}
-      viewport={{ once: true }}
-      transition={{ delay: index * 0.08, duration: 0.45, ease: 'easeOut' }}
-    >
-      <Link
-        to={`/projects/${project.slug}`}
-        className="block group rounded-xl overflow-hidden border border-border bg-card shadow-card hover:-translate-y-1 hover:shadow-lg transition-all duration-200"
-      >
-        <div className="aspect-[4/3] overflow-hidden bg-surface">
-          {project.thumbnail ? (
-            <img
-              src={project.thumbnail}
-              alt={project.title}
-              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-              loading="lazy"
-            />
-          ) : (
-            <ProjectThumbnailPlaceholder index={index} />
-          )}
-        </div>
-        <div className="p-4">
-          <Badge>{project.category_display}</Badge>
-          <h3 className="mt-2 font-display text-xl text-text-primary group-hover:text-accent transition-colors">
-            {project.title}
-          </h3>
-          <p className="mt-1 text-sm text-text-secondary line-clamp-2">
-            {project.short_description}
-          </p>
-        </div>
-      </Link>
-    </motion.div>
-  )
-}
-
-function ProjectThumbnailPlaceholder({ index }: { index: number }) {
-  const gradients = [
-    'linear-gradient(135deg, #1F6B61 0%, #0D2B36 100%)',
-    'linear-gradient(135deg, #C97C3D 0%, #0D2B36 100%)',
-    'linear-gradient(135deg, #0D2B36 0%, #4A6570 100%)',
-  ]
-  return (
-    <div
-      className="w-full h-full flex items-end p-4"
-      style={{ background: gradients[index % gradients.length] }}
-    >
-      <div className="text-white/80 text-xs font-medium tracking-wider uppercase">
-        Case Study
-      </div>
-    </div>
-  )
-}
