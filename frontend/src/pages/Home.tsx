@@ -12,12 +12,16 @@ export default function Home() {
     <>
       <SEO
         path="/"
+        description="Temple Shelemiah Lomotey is a full-stack designer and developer specialising in UI/UX design, web development, branding, and CMS & SEO. He helps startups and businesses build polished digital products — available for freelance projects globally."
         schema={{
           '@context': 'https://schema.org',
           '@type': 'Person',
-          name: 'Temple Lomotey',
+          name: 'Temple Shelemiah Lomotey',
+          alternateName: 'Temple Lomotey',
           url: 'https://templelomotey.work',
           jobTitle: 'Full-Stack Designer & Developer',
+          description:
+            'Full-stack designer and developer specialising in UI/UX design, web development, branding, CMS, and SEO. Works with startups and businesses globally.',
           knowsAbout: ['UI/UX Design', 'Web Development', 'Branding', 'CMS', 'SEO'],
           sameAs: [
             'https://linkedin.com/in/temples-dev',

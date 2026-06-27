@@ -1,10 +1,10 @@
 import { Helmet } from 'react-helmet-async'
 
 const BASE_URL = 'https://templelomotey.work'
-const SITE_NAME = 'Temple'
-const DEFAULT_TITLE = 'Temple — Full-Stack Designer & Developer'
+const SITE_NAME = 'Temple Shelemiah Lomotey'
+const DEFAULT_TITLE = 'Temple Shelemiah Lomotey — Full-Stack Designer & Developer'
 const DEFAULT_DESCRIPTION =
-  'Temple is a full-stack designer and developer specialising in UI/UX, web development, branding, and CMS & SEO. Available for freelance projects globally.'
+  'Temple Shelemiah Lomotey is a full-stack designer and developer specialising in UI/UX design, web development, branding, and CMS & SEO. He helps startups and businesses build polished digital products — available for freelance projects globally.'
 
 interface SEOProps {
   title?: string
