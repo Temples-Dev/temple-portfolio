@@ -30,7 +30,7 @@ class Project(models.Model):
     category         = models.CharField(max_length=20, choices=CATEGORY_CHOICES)
     short_description = models.CharField(max_length=300)
     full_description = models.TextField()
-    thumbnail        = models.ImageField(upload_to='projects/thumbnails/', blank=True)
+    thumbnail        = models.ImageField(upload_to='projects/thumbnails/', blank=True, max_length=500)
     live_url         = models.URLField(blank=True)
     github_url       = models.URLField(blank=True)
     tags             = models.ManyToManyField(ProjectTag, blank=True, related_name='projects')
@@ -53,7 +53,7 @@ class Project(models.Model):
 
 class ProjectImage(models.Model):
     project  = models.ForeignKey(Project, on_delete=models.CASCADE, related_name='images')
-    image    = models.ImageField(upload_to='projects/images/')
+    image    = models.ImageField(upload_to='projects/images/', max_length=500)
     alt_text = models.CharField(max_length=200, blank=True)
     order    = models.PositiveIntegerField(default=0)
 

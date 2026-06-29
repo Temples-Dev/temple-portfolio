@@ -8,6 +8,8 @@ from django.core.files.storage import Storage
 
 class CloudinaryMediaStorage(Storage):
     def _save(self, name, content):
+        if hasattr(content, 'seek'):
+            content.seek(0)
         result = cloudinary.uploader.upload(
             content,
             use_filename=True,
@@ -15,7 +17,7 @@ class CloudinaryMediaStorage(Storage):
             overwrite=False,
             resource_type='auto',
         )
-        return result['secure_url']
+        return result['public_id']
 
     def url(self, name):
         if not name:
