@@ -11,11 +11,16 @@ class BlogTagAdmin(ModelAdmin):
 
 @admin.register(BlogPost)
 class BlogPostAdmin(ModelAdmin):
-    list_display  = ['title', 'is_published', 'published_at', 'created_at']
-    list_editable = ['is_published']
-    list_filter   = ['is_published', 'tags']
-    search_fields = ['title', 'excerpt', 'content']
+    list_display   = ['title', 'status', 'published_at', 'created_at']
+    list_editable  = ['status']
+    list_filter    = ['status', 'tags']
+    search_fields  = ['title', 'excerpt', 'content']
     prepopulated_fields = {'slug': ('title',)}
     filter_horizontal = ('tags',)
-    ordering = ['-created_at']
+    ordering       = ['-created_at']
     readonly_fields = ['created_at', 'updated_at']
+    fieldsets = [
+        (None, {'fields': ['title', 'slug', 'excerpt', 'content', 'cover_image', 'tags']}),
+        ('Publishing', {'fields': ['status', 'published_at']}),
+        ('Timestamps', {'fields': ['created_at', 'updated_at']}),
+    ]

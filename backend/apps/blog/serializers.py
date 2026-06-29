@@ -23,11 +23,56 @@ class BlogPostListSerializer(serializers.ModelSerializer):
 class BlogPostDetailSerializer(serializers.ModelSerializer):
     tags = serializers.StringRelatedField(many=True)
     read_time_minutes = serializers.IntegerField(read_only=True)
+    is_published = serializers.BooleanField(read_only=True)
 
     class Meta:
         model = BlogPost
         fields = [
             'id', 'title', 'slug', 'excerpt', 'content', 'cover_image',
-            'tags', 'is_published', 'published_at', 'read_time_minutes',
+            'tags', 'status', 'is_published', 'published_at', 'read_time_minutes',
             'created_at', 'updated_at',
         ]
+
+
+class BlogPostWriteSerializer(serializers.ModelSerializer):
+    tags = serializers.ListField(
+        child=serializers.CharField(max_length=50),
+        required=False,
+        default=list,
+        help_text='List of tag names — created automatically if they do not exist.',
+    )
+
+    class Meta:
+        model = BlogPost
+        fields = [
+            'title', 'slug', 'excerpt', 'content', 'cover_image',
+            'tags', 'status', 'published_at',
+        ]
+        extra_kwargs = {
+            'slug': {'required': False},
+            'cover_image': {'required': False},
+            'published_at': {'required': False},
+        }
+
+    def _sync_tags(self, instance, tag_names):
+        tags = []
+        for name in tag_names:
+            tag, _ = BlogTag.objects.get_or_create(
+                name=name,
+                defaults={'slug': name.lower().replace(' ', '-')},
+            )
+            tags.append(tag)
+        instance.tags.set(tags)
+
+    def create(self, validated_data):
+        tag_names = validated_data.pop('tags', [])
+        post = super().create(validated_data)
+        self._sync_tags(post, tag_names)
+        return post
+
+    def update(self, instance, validated_data):
+        tag_names = validated_data.pop('tags', None)
+        post = super().update(instance, validated_data)
+        if tag_names is not None:
+            self._sync_tags(post, tag_names)
+        return post

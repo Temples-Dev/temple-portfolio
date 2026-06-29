@@ -1,4 +1,5 @@
 from pathlib import Path
+from django.urls import reverse_lazy
 import environ
 
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -164,6 +165,29 @@ UNFOLD = {
     "SITE_SYMBOL": "edit_square",
     "SHOW_HISTORY": True,
     "SHOW_VIEW_ON_SITE": True,
+    "SIDEBAR": {
+        "show_search": True,
+        "show_all_applications": True,
+        "navigation": [
+            {
+                "title": "Content",
+                "separator": False,
+                "items": [
+                    {"title": "Blog Posts", "icon": "article",     "link": reverse_lazy("admin:blog_blogpost_changelist")},
+                    {"title": "Tags",       "icon": "label",       "link": reverse_lazy("admin:blog_blogtag_changelist")},
+                    {"title": "Projects",   "icon": "work",        "link": reverse_lazy("admin:projects_project_changelist")},
+                ],
+            },
+            {
+                "title": "Settings",
+                "separator": True,
+                "items": [
+                    {"title": "Users",  "icon": "person",      "link": reverse_lazy("admin:auth_user_changelist")},
+                    {"title": "Groups", "icon": "group",       "link": reverse_lazy("admin:auth_group_changelist")},
+                ],
+            },
+        ],
+    },
     "COLORS": {
         "primary": {
             "50":  "252 241 228",
