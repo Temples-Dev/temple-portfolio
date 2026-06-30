@@ -56,8 +56,10 @@ class BlogPostWriteSerializer(serializers.ModelSerializer):
         child=serializers.CharField(max_length=50),
         required=False,
         default=list,
+        write_only=True,
         help_text='List of tag names — created automatically if they do not exist.',
     )
+    cover_image = serializers.ImageField(required=False, write_only=True)
 
     class Meta:
         model = BlogPost
@@ -67,7 +69,6 @@ class BlogPostWriteSerializer(serializers.ModelSerializer):
         ]
         extra_kwargs = {
             'slug': {'required': False},
-            'cover_image': {'required': False},
             'cover_image_url': {'required': False},
             'published_at': {'required': False},
         }
