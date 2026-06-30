@@ -82,6 +82,12 @@ class BlogPostWriteSerializer(serializers.ModelSerializer):
             tags.append(tag)
         instance.tags.set(tags)
 
+    def to_representation(self, instance):
+        data = super().to_representation(instance)
+        data['tags'] = [tag.name for tag in instance.tags.all()]
+        data['cover_image'] = _cover_image(instance)
+        return data
+
     def create(self, validated_data):
         tag_names = validated_data.pop('tags', [])
         post = super().create(validated_data)
