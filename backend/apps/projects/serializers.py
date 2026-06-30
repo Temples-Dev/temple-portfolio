@@ -14,9 +14,21 @@ class ProjectImageSerializer(serializers.ModelSerializer):
         fields = ['id', 'image', 'alt_text', 'order']
 
 
+def _thumbnail(obj):
+    if obj.thumbnail_url:
+        return obj.thumbnail_url
+    if obj.thumbnail:
+        return obj.thumbnail.url
+    return ''
+
+
 class ProjectListSerializer(serializers.ModelSerializer):
     category_display = serializers.CharField(source='get_category_display', read_only=True)
     tags = serializers.StringRelatedField(many=True)
+    thumbnail = serializers.SerializerMethodField()
+
+    def get_thumbnail(self, obj):
+        return _thumbnail(obj)
 
     class Meta:
         model = Project
@@ -30,6 +42,10 @@ class ProjectDetailSerializer(serializers.ModelSerializer):
     category_display = serializers.CharField(source='get_category_display', read_only=True)
     tags = serializers.StringRelatedField(many=True)
     images = ProjectImageSerializer(many=True, read_only=True)
+    thumbnail = serializers.SerializerMethodField()
+
+    def get_thumbnail(self, obj):
+        return _thumbnail(obj)
 
     class Meta:
         model = Project

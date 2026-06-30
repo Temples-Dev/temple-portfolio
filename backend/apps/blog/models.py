@@ -33,6 +33,7 @@ class BlogPost(models.Model):
     excerpt     = models.CharField(max_length=500)
     content     = models.TextField(help_text='HTML content')
     cover_image = models.ImageField(upload_to='blog/covers/', blank=True, max_length=500)
+    cover_image_url = models.URLField(blank=True, help_text='Pexels (or other) image URL — overrides file upload.')
     tags        = models.ManyToManyField(BlogTag, blank=True, related_name='posts')
     status      = models.CharField(max_length=20, choices=STATUS_CHOICES, default=STATUS_DRAFT, db_index=True)
     published_at = models.DateTimeField(null=True, blank=True)

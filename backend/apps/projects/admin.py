@@ -20,6 +20,11 @@ class ProjectAdmin(ModelAdmin):
     filter_horizontal = ('tags',)
     inlines = [ProjectImageInline]
     ordering = ['order', '-created_at']
+    fieldsets = [
+        (None, {'fields': ['title', 'slug', 'category', 'short_description', 'full_description', 'thumbnail', 'thumbnail_url', 'tags']}),
+        ('Links', {'fields': ['live_url', 'github_url']}),
+        ('Display', {'fields': ['is_featured', 'order']}),
+    ]
 
 
 @admin.register(ProjectTag)

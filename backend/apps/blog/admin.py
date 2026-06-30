@@ -20,7 +20,7 @@ class BlogPostAdmin(ModelAdmin):
     ordering       = ['-created_at']
     readonly_fields = ['created_at', 'updated_at']
     fieldsets = [
-        (None, {'fields': ['title', 'slug', 'excerpt', 'content', 'cover_image', 'tags']}),
+        (None, {'fields': ['title', 'slug', 'excerpt', 'content', 'cover_image', 'cover_image_url', 'tags']}),
         ('Publishing', {'fields': ['status', 'published_at']}),
         ('Timestamps', {'fields': ['created_at', 'updated_at']}),
     ]

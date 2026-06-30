@@ -31,6 +31,7 @@ class Project(models.Model):
     short_description = models.CharField(max_length=300)
     full_description = models.TextField()
     thumbnail        = models.ImageField(upload_to='projects/thumbnails/', blank=True, max_length=500)
+    thumbnail_url    = models.URLField(blank=True, help_text='Pexels (or other) image URL — overrides file upload.')
     live_url         = models.URLField(blank=True)
     github_url       = models.URLField(blank=True)
     tags             = models.ManyToManyField(ProjectTag, blank=True, related_name='projects')

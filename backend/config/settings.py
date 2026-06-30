@@ -112,6 +112,8 @@ STORAGES = {
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+PEXELS_API_KEY = env('PEXELS_API_KEY', default='')
+
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,

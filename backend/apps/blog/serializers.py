@@ -8,9 +8,22 @@ class BlogTagSerializer(serializers.ModelSerializer):
         fields = ['name', 'slug']
 
 
+def _cover_image(obj):
+    """Return cover_image_url if set, else the Cloudinary URL, else empty string."""
+    if obj.cover_image_url:
+        return obj.cover_image_url
+    if obj.cover_image:
+        return obj.cover_image.url
+    return ''
+
+
 class BlogPostListSerializer(serializers.ModelSerializer):
     tags = serializers.StringRelatedField(many=True)
     read_time_minutes = serializers.IntegerField(read_only=True)
+    cover_image = serializers.SerializerMethodField()
+
+    def get_cover_image(self, obj):
+        return _cover_image(obj)
 
     class Meta:
         model = BlogPost
@@ -24,6 +37,10 @@ class BlogPostDetailSerializer(serializers.ModelSerializer):
     tags = serializers.StringRelatedField(many=True)
     read_time_minutes = serializers.IntegerField(read_only=True)
     is_published = serializers.BooleanField(read_only=True)
+    cover_image = serializers.SerializerMethodField()
+
+    def get_cover_image(self, obj):
+        return _cover_image(obj)
 
     class Meta:
         model = BlogPost
@@ -45,12 +62,13 @@ class BlogPostWriteSerializer(serializers.ModelSerializer):
     class Meta:
         model = BlogPost
         fields = [
-            'title', 'slug', 'excerpt', 'content', 'cover_image',
+            'title', 'slug', 'excerpt', 'content', 'cover_image', 'cover_image_url',
             'tags', 'status', 'published_at',
         ]
         extra_kwargs = {
             'slug': {'required': False},
             'cover_image': {'required': False},
+            'cover_image_url': {'required': False},
             'published_at': {'required': False},
         }
 
