@@ -53,7 +53,7 @@ export default function Services() {
           <div className="lg:w-[280px] shrink-0">
             <SectionLabel>What I Do</SectionLabel>
             <h2 className="mt-3 font-display text-3xl text-text-primary">
-              Services to help your brand grow
+              What I work on
             </h2>
           </div>
 

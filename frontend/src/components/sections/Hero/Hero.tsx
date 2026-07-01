@@ -37,8 +37,8 @@ export default function Hero() {
               animate="visible"
               className="mt-4 font-display text-5xl lg:text-6xl leading-tight text-text-primary"
             >
-              I design and build web experiences that make an{' '}
-              <span className="text-accent">impact.</span>
+              I build software. Web apps on the surface,{' '}
+              <span className="text-accent">systems work underneath.</span>
             </motion.h1>
 
             <motion.p
@@ -48,8 +48,9 @@ export default function Hero() {
               animate="visible"
               className="mt-6 text-lg text-text-secondary leading-relaxed max-w-xl"
             >
-              I help brands stand out online with clean, functional and
-              user-friendly design &amp; development.
+              Full-stack engineer working across Django, React, and Zig.
+              Preparing for the MSc in Intelligent Computing Systems at Ashesi,
+              focused on software engineering and systems.
             </motion.p>
 
             <motion.div

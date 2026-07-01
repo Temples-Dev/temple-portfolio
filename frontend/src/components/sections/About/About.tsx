@@ -6,38 +6,38 @@ const features = [
   {
     icon: (
       <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M9.53 16.122a3 3 0 0 0-5.78 1.128 2.25 2.25 0 0 1-2.4 2.245 4.5 4.5 0 0 0 8.4-2.245c0-.399-.078-.78-.22-1.128zm0 0a15.998 15.998 0 0 0 3.388-1.62m-5.043-.025a15.994 15.994 0 0 1 1.622-3.395m3.42 3.42a15.995 15.995 0 0 0 4.764-4.648l3.876-5.814a1.151 1.151 0 0 0-1.597-1.597L14.146 6.32a15.996 15.996 0 0 0-4.649 4.763m3.42 3.42a6.776 6.776 0 0 0-3.42-3.42" />
-      </svg>
-    ),
-    title: 'Design',
-    description: 'UI/UX that converts visitors into customers.',
-  },
-  {
-    icon: (
-      <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 6.75 22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3-4.5 16.5" />
       </svg>
     ),
-    title: 'Development',
-    description: 'Fast, accessible, production-ready code.',
+    title: 'Software Engineering & Systems',
+    description: 'Production architecture, low-level work in Zig, and systems that behave at scale.',
   },
   {
     icon: (
       <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 3v11.25A2.25 2.25 0 0 0 6 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0 1 18 16.5h-2.25m-7.5 0h7.5m-7.5 0-1 3m8.5-3 1 3m0 0 .5 1.5m-.5-1.5h-9.5m0 0-.5 1.5" />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M9.75 3.104v5.714a2.25 2.25 0 0 1-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 0 1 4.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0 1 12 15a9.065 9.065 0 0 1-6.23-.693L5 14.5m14.8.8 1.402 1.402c1.232 1.232.65 3.318-1.067 3.611A48.309 48.309 0 0 1 12 21c-2.773 0-5.491-.235-8.135-.687-1.718-.293-2.3-2.379-1.067-3.61L5 14.5" />
       </svg>
     ),
-    title: 'Strategy',
-    description: 'SEO and CMS to grow organic reach.',
+    title: 'AI & Data Science',
+    description: 'Applying machine learning and data science to real engineering problems.',
   },
   {
     icon: (
       <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M16.5 18.75h-9m9 0a3 3 0 0 1 3 3h-15a3 3 0 0 1 3-3m9 0v-3.375c0-.621-.503-1.125-1.125-1.125h-.871M7.5 18.75v-3.375c0-.621.504-1.125 1.125-1.125h.872m5.007 0H9.497m5.007 0a7.454 7.454 0 0 1-.982-3.172M9.497 14.25a7.454 7.454 0 0 0 .981-3.172M5.25 4.236c-.982.143-1.954.317-2.916.52A6.003 6.003 0 0 0 7.73 9.728M5.25 4.236V4.5c0 2.108.966 3.99 2.48 5.228M5.25 4.236V2.721C7.456 2.41 9.71 2.25 12 2.25c2.291 0 4.545.16 6.75.47v1.516M7.73 9.728a6.726 6.726 0 0 0 2.748 1.35m8.272-6.842V4.5c0 2.108-.966 3.99-2.48 5.228m2.48-5.492a46.32 46.32 0 0 1 2.916.52 6.003 6.003 0 0 1-5.395 4.972m0 0a6.726 6.726 0 0 1-2.749 1.35m0 0a6.772 6.772 0 0 1-3.044 0" />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285Z" />
       </svg>
     ),
-    title: 'Results',
-    description: 'Measurable impact on your brand and business.',
+    title: 'Cybersecurity',
+    description: 'Security-conscious design and understanding how systems break before they do.',
+  },
+  {
+    icon: (
+      <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M12 21a9.004 9.004 0 0 0 8.716-6.747M12 21a9.004 9.004 0 0 1-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 0 1 7.843 4.582M12 3a8.997 8.997 0 0 0-7.843 4.582m15.686 0A11.953 11.953 0 0 1 12 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0 1 21 12c0 .778-.099 1.533-.284 2.253M3 12c0 .778.099 1.533.284 2.253" />
+      </svg>
+    ),
+    title: 'Web Development',
+    description: 'Full-stack Django and React, from the API down to the interface.',
   },
 ]
 
@@ -75,19 +75,28 @@ export default function About() {
           >
             <SectionLabel>About Me</SectionLabel>
             <h2 className="mt-3 font-display text-3xl lg:text-4xl text-text-primary">
-              Designing digital experiences that create{' '}
-              <span className="text-accent">real impact.</span>
+              Software engineer with a bit of a{' '}
+              <span className="text-accent">systems obsession.</span>
             </h2>
             <p className="mt-4 text-base text-text-secondary leading-relaxed">
-              I'm Temple — a full-stack designer and developer who bridges the gap
-              between beautiful interfaces and solid engineering. With a focus on
-              clarity, performance, and business outcomes, I build products that
-              look great and actually work.
+              I'm Temple, a software engineer based in Ghana. Most of what I
+              build is full-stack web work: Django APIs, React frontends, things
+              that run in production. But I keep getting pulled toward the layer
+              underneath: the protocols, the binary formats, the parts most
+              frameworks quietly handle for you.
             </p>
             <p className="mt-3 text-base text-text-secondary leading-relaxed">
-              Whether you need a landing page, a complex web application, or a
-              complete brand identity, I bring the same care and craft to every
-              project.
+              Zit is the clearest example of that. It's a Git implementation I'm
+              building in Zig, from the object store up. I started it to
+              understand how Git actually works at the storage level. Still in
+              progress, but that's sort of the point.
+            </p>
+            <p className="mt-3 text-base text-text-secondary leading-relaxed">
+              I'm preparing for the MSc in Intelligent Computing Systems at
+              Ashesi University. The program runs across three tracks: software
+              engineering and systems, AI and data science, and cybersecurity.
+              My focus is the SE and Systems track, but the three are designed
+              to connect. Learning towards all of it every day.
             </p>
 
             {/* Feature pills */}
