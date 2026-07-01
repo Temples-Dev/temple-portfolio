@@ -6,7 +6,7 @@ from django_filters.rest_framework import DjangoFilterBackend
 from drf_spectacular.utils import extend_schema
 
 from .models import Project
-from .serializers import ProjectListSerializer, ProjectDetailSerializer
+from .serializers import ProjectListSerializer, ProjectDetailSerializer, ProjectWriteSerializer
 from .filters import ProjectFilter
 
 
@@ -20,6 +20,8 @@ class ProjectViewSet(viewsets.ModelViewSet):
     def get_serializer_class(self):
         if self.action == 'retrieve':
             return ProjectDetailSerializer
+        if self.action in ('create', 'update', 'partial_update'):
+            return ProjectWriteSerializer
         return ProjectListSerializer
 
     def get_permissions(self):

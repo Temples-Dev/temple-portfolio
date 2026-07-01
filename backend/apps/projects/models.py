@@ -18,10 +18,11 @@ class ProjectTag(models.Model):
 
 class Project(models.Model):
     CATEGORY_CHOICES = [
-        ('ui_ux',    'UI/UX Design'),
-        ('web_dev',  'Web Development'),
-        ('branding', 'Branding'),
-        ('cms_seo',  'CMS & SEO'),
+        ('ui_ux',                'UI/UX Design'),
+        ('web_dev',              'Web Development'),
+        ('branding',             'Branding'),
+        ('cms_seo',              'CMS & SEO'),
+        ('systems_programming',  'Systems Programming'),
     ]
 
     id               = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
